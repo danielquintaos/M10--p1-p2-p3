@@ -10,12 +10,18 @@
   outputs = { self, nixpkgs, flake-utils, nodejs }:
     flake-utils.lib.eachDefaultSystem (system:
       let
-        pkgs = import nixpkgs { inherit system; }; 
-        node = pkgs.nodejs_18;
+        pkgs = import nixpkgs { inherit system; };
+        node = nodejs.packages.${system}.nodejs;
       in
       {
         devShells.default = pkgs.mkShell {
-          buildInputs = [ node pkgs.yarn pkgs.watchman pkgs.android-tools ];
+          buildInputs = [
+            node
+            pkgs.nodePackages.react-native-cli
+            pkgs.yarn
+            pkgs.watchman
+            pkgs.android-tools
+          ];
         };
 
         packages.app = pkgs.stdenv.mkDerivation {
