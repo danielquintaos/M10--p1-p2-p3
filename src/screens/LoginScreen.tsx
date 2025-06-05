@@ -1,22 +1,32 @@
 import React, { useState } from 'react';
-import { View, TextInput, Button } from 'react-native';
+import { View } from 'react-native';
+import { TextInput, Button } from 'react-native-paper';
 import { useApp } from '../context/AppContext';
+import { useNavigation } from '@react-navigation/native';
 
 export default function LoginScreen() {
   const { login } = useApp();
+  const navigation = useNavigation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const onLogin = async () => {
+    await login(email, password);
+    navigation.navigate('Home' as never);
+  };
+
   return (
     <View>
-      <TextInput value={email} onChangeText={setEmail} placeholder="Email" />
+      <TextInput value={email} onChangeText={setEmail} label="Email" />
       <TextInput
         value={password}
         onChangeText={setPassword}
-        placeholder="Password"
+        label="Password"
         secureTextEntry
       />
-      <Button title="Login" onPress={() => login(email, password)} />
+      <Button mode="contained" onPress={onLogin}>
+        Login
+      </Button>
     </View>
   );
 }
