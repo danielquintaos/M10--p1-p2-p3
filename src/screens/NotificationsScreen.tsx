@@ -1,10 +1,15 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
+import { Button, Text } from 'react-native-paper';
+import { useApp } from '../context/AppContext';
 
 export default function NotificationsScreen() {
+  const { showNotification } = useApp();
+
   return (
     <View>
-      <Text>Notifications</Text>
+      <Text variant="titleMedium">Notifications</Text>
+      <Button onPress={() => showNotification('New notification!')}>Test</Button>
     </View>
   );
 }
