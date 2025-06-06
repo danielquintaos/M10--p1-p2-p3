@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { View } from 'react-native';
-import { TextInput, Button } from 'react-native-paper';
+import { View, TextInput, Button } from 'react-native';
 import { useApp } from '../context/AppContext';
 import { useNavigation } from '@react-navigation/native';
 
@@ -17,16 +16,24 @@ export default function LoginScreen() {
 
   return (
     <View>
-      <TextInput value={email} onChangeText={setEmail} label="Email" />
+      <TextInput
+        value={email}
+        onChangeText={setEmail}
+        label="Email"
+        placeholder="Email"
+        accessibilityLabel="Email input"
+        testID="emailInput"
+      />
       <TextInput
         value={password}
         onChangeText={setPassword}
         label="Password"
+        placeholder="Password"
         secureTextEntry
+        accessibilityLabel="Password input"
+        testID="passwordInput"
       />
-      <Button mode="contained" onPress={onLogin}>
-        Login
-      </Button>
+      <Button title="Login" onPress={onLogin} accessibilityLabel="loginButton" />
     </View>
   );
 }
