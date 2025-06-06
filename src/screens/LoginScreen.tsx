@@ -17,12 +17,22 @@ export default function LoginScreen() {
 
   return (
     <View>
-      <TextInput value={email} onChangeText={setEmail} label="Email" />
+      <TextInput
+        value={email}
+        onChangeText={setEmail}
+        label="Email"
+        accessibilityLabel="Email"
+        placeholder="Email"
+        testID="email-input"
+      />
       <TextInput
         value={password}
         onChangeText={setPassword}
         label="Password"
         secureTextEntry
+        accessibilityLabel="Password"
+        placeholder="Password"
+        testID="password-input"
       />
       <Button mode="contained" onPress={onLogin}>
         Login
