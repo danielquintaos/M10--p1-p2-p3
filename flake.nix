@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
     flake-utils.url = "github:numtide/flake-utils";
-    nodejs.url = "github:nix-community/nix-nodejs?rev=refs/tags/v18.19.0";
+    nodejs.url = "github:nix-community/nix-nodejs?ref=v18.19.0";
   };
 
   outputs = { self, nixpkgs, flake-utils, nodejs }:
